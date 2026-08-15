@@ -14,6 +14,10 @@ gradle-app.setting
 /server/build/
 /shared/build/
 
+## Python (scripts de README_for_IAs/tools):
+__pycache__/
+*.pyc
+
 ## Java:
 *.class
 *.war
@@ -154,6 +158,55 @@ Thumbs.db
 *#*#
 /.kotlin/
 /assets/assets.txt
+
+## ─────────────────────────────────────────────────────────────────────
+## SEGURIDAD — nada de esto debe salir del equipo. Si algo de aquí llega
+## a subirse, no basta con borrarlo del repo: queda en el historial de
+## git y hay que rotar la credencial.
+## ─────────────────────────────────────────────────────────────────────
+
+## Almacenes de claves de firma. OJO: la llave de subida de esta app no
+## tiene extensión (se llama solo "Edu_Tycoon"), así que estos patrones
+## NO la atrapan. Guárdala siempre fuera del repo.
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.bks
+*.pem
+*.key
+*.der
+
+## Credenciales de firma y de servicios
+keystore.properties
+signing.properties
+key.properties
+google-services.json
+play-service-account*.json
+service-account*.json
+*.env
+.env
+.env.*
+secrets.properties
+
+## Artefactos de release. El AAB pesa ~160 MB y GitHub rechaza cualquier
+## archivo de más de 100 MB, así que esto además evita que el push falle.
+/android/release/
+*.aab
+*.apk
+*.apks
+native-debug-symbols*.zip
+
+## Mapping de ProGuard/R8: permite desofuscar los stack traces de la app
+## publicada. No es una credencial, pero no tiene por qué ser público.
+mapping.txt
+/android/build/outputs/mapping/
+
+## Backups y copias que suelen acabar guardando cosas sensibles
+*_sensitive*
+/_sensitive_backup/
+*.jks.bak
+*.orig
 
 ## Special cases:
 
