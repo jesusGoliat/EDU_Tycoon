@@ -16,7 +16,7 @@
 
 | | |
 |---|---|
-| Archivo | `C:\Users\gabri\Downloads\Edu_Tycoon` (sin extensión) |
+| Archivo | `C:\Users\gabri\Downloads\EduTycoon PlayStore\Edu_Tycoon` (sin extensión) |
 | Formato | PKCS12 |
 | Alias | `KEY0` |
 | Propietario | `C=55749, ST=Mexico, L=Tecamac, CN=Kevin Zarco Sosa` |
@@ -26,14 +26,18 @@
 
 La creó **Kevin Zarco Sosa** (`kzarcos1900@alumno.ipn.mx`), colaborador del
 proyecto, y se la compartió a Gabriel. La contraseña la tiene Gabriel y **no está
-documentada en ningún archivo, a propósito. No la pidas ni la escribas.**
+documentada en ningún archivo de este repo, a propósito. No la pidas ni la
+escribas.**
 
-Para confirmar que un `.jks` candidato es el correcto, compara su huella con la
+Para confirmar que un almacén candidato es el correcto, compara su huella con la
 de arriba (esto pide la contraseña, córrelo tú, no la IA):
 
 ```bash
-keytool -list -v -keystore "C:\Users\gabri\Downloads\Edu_Tycoon" -alias KEY0
+keytool -list -v -keystore "C:\Users\gabri\Downloads\EduTycoon PlayStore\Edu_Tycoon" -alias KEY0
 ```
+
+Para verificar un AAB **ya firmado** no hace falta contraseña: el certificado
+viaja dentro del bundle. Usa `tools/checkaab.py`.
 
 Para verificar que un AAB ya firmado lleva la llave correcta, sin necesidad de
 contraseña, extrae el certificado del bundle y compáralo. Ver
@@ -97,14 +101,7 @@ Se sube en Play Console → Explorador de bundles → la versión → Descargas.
 
 ## Acceso a producción
 
-Al 15 ago 2026 los tres criterios estaban cumplidos y la solicitud lista para
-enviarse:
+**Solicitud enviada el 15 de agosto de 2026 a las 6:04 p.m. En revisión.**
 
-- ✅ Publicar una versión de prueba cerrada
-- ✅ Al menos 12 verificadores aceptando participar
-- ✅ Ejecutar la prueba cerrada con mínimo 12 verificadores durante 14 días
-
-El formulario pide describir cómo se reclutó a los verificadores, qué
-comentarios dieron y qué cambió en el juego a raíz de ellos. La última es la que
-más se atora: si no hubo cambios derivados del feedback, hay que explicar qué se
-validó y por qué no hizo falta cambiar nada, pero no se puede dejar vacía.
+Las nueve respuestas enviadas, la coherencia entre ellas y qué hacer si rechazan
+están en [05-acceso-a-produccion.md](05-acceso-a-produccion.md).

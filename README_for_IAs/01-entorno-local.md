@@ -90,24 +90,39 @@ No hay Gradle instalado globalmente; se usa el wrapper del proyecto
 No hay scripts de init en `~/.gradle/init.d/` ni un `~/.gradle/gradle.properties`
 global — se verificó, no existen. Todo lo que afecta el build está en el repo.
 
-## Llave de firma
+## Material de la Play Store y firma
+
+Todo lo importante del proyecto que **no** vive en el repositorio está aquí:
 
 ```
-C:\Users\gabri\Downloads\Edu_Tycoon
+C:\Users\gabri\Downloads\EduTycoon PlayStore\
 ```
 
-Sin extensión. Es un almacén **PKCS12** (empieza con `30 82`), 2628 bytes, alias
-`KEY0`. Es la llave de subida real de la app publicada — verificado comparando su
-huella con la del AAB que ya estaba en Play.
+Contiene la llave de subida (`Edu_Tycoon`, sin extensión) y material sensible
+adicional. Nada de esa carpeta debe copiarse al repo ni a un artefacto ni a un
+chat.
 
-**Pendientes recomendados:** renombrarla a `Edu_Tycoon.jks` (el selector de
-Android Studio filtra por extensión y sin ella no la muestra) y moverla fuera de
-`Downloads` a un lugar estable, siempre **fuera del repo**.
+La llave es un almacén **PKCS12** (empieza con `30 82`), 2628 bytes, alias `KEY0`.
+Es la llave de subida real de la app publicada — verificado comparando su huella
+con la del AAB que ya estaba en Play. Detalles en
+[04-publicacion-play.md](04-publicacion-play.md).
 
-La contraseña la tiene Gabriel y **no está escrita en ningún archivo**. No la
-pidas ni la guardes.
+**La contraseña no está documentada en ningún archivo de este repo, y así debe
+seguir. No la pidas, no la leas, no la escribas.**
 
-Detalles de la llave en [04-publicacion-play.md](04-publicacion-play.md).
+### Riesgos abiertos de esta carpeta
+
+1. **La llave y su contraseña están juntas.** Cualquiera con acceso al disco
+   obtiene las dos y puede firmar actualizaciones como si fuera el desarrollador.
+   Conviene separarlas.
+2. **Está en `Downloads`**, que es donde escribe el navegador y la primera carpeta
+   que la gente vacía sin mirar. Un borrado accidental sin respaldo significa que
+   la app **nunca más se puede actualizar**: Play rechaza cualquier AAB firmado
+   con otra llave.
+3. **La llave no tiene extensión**, así que los patrones `*.jks` del `.gitignore`
+   no la atrapan si alguna vez acaba dentro del repo.
+
+Respaldo recomendado: una copia cifrada fuera de este equipo.
 
 ## Otros proyectos de Gabriel en esta máquina
 
