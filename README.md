@@ -26,6 +26,21 @@ Este repositorio es el proyecto del equipo para la **Entrega 1** de la materia. 
 **Característica de la entrega:** regla de compra que impide gastar más saldo del disponible (issue #1,
 integrada con el PR #2). Ver [`docs/idea.md`](docs/idea.md).
 
+### Ligas de verificación (Entrega 1)
+
+| Evidencia | Liga |
+|---|---|
+| Informe de la entrega | [`docs/informe/README.md`](docs/informe/README.md) |
+| Issue de la característica | [#1 — feat: block purchases and upgrades that exceed available balance](https://github.com/jesusGoliat/EDU_Tycoon/issues/1) |
+| Pull Request (en inglés, con QA y revisión) | [#2 — feat: block purchases that exceed available balance](https://github.com/jesusGoliat/EDU_Tycoon/pull/2) |
+| Integración continua del PR | [Ejecución de CI en verde](https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/36212252740) |
+| Etiqueta de la entrega | [`parcial-1`](https://github.com/jesusGoliat/EDU_Tycoon/releases/tag/parcial-1) |
+| Ficha de idea (Parte 1) | [`docs/idea.md`](docs/idea.md) · bosquejos en [`docs/diseno/`](docs/diseno/) |
+| Arquitectura y código (Parte 2) | [`docs/arquitectura.md`](docs/arquitectura.md) · [`docs/recorrido-codigo.md`](docs/recorrido-codigo.md) · [`docs/licencias.md`](docs/licencias.md) |
+| Matriz de pruebas | [`docs/pruebas.md`](docs/pruebas.md) |
+| Ejecución de cada integrante | [`docs/evidencia/entrega-1/`](docs/evidencia/entrega-1/) |
+| PR de documentación | [#6 — docs: add Entrega 1 idea, design, architecture and setup guides](https://github.com/jesusGoliat/EDU_Tycoon/pull/6) |
+
 ---
 
 ## Estructura del repositorio
