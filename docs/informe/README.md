@@ -21,7 +21,7 @@ EDU_Tycoon/
 ├── android/                 Launcher de Android, manifiesto, Room (AppDatabase, AndroidGameSaveManager)
 ├── core/                    Lógica y UI del juego (libGDX + KTX), motores de ciclo, ReglaCompra
 │   └── src/test/            Pruebas unitarias JUnit 4 (GameStateTest, ReglaCompraTest, GameCycleEngineTest)
-├── assets/                  Mapa de Tiled, sprites, fuentes y sonidos
+├── assets/                  Mapa de Tiled, sprites y fuentes
 ├── .github/workflows/ci.yml Integración continua: :core:test + :android:assembleDebug
 └── docs/
     ├── idea.md              Parte 1 · ficha de idea, historia de usuario y criterio de aceptación
@@ -126,7 +126,7 @@ las figuras indican su autor y que se elaboraron con apoyo de IA (Claude).
 | JDK | OpenJDK 21.0.12 | Sistema: Oracle JDK 24.0.2 · Gradle usó JetBrains JDK 21.0.11 |
 | Construcción | Gradle 9.5.0 (wrapper), AGP 9.3.1, Kotlin 2.2.10, compileSdk 36, Build-Tools 36 | Igual (wrapper del proyecto) |
 | Herramientas | adb 1.0.41, scrcpy 4.1 | Android Studio (compilación 261.26222.65), Git Bash |
-| Dispositivos | Xiaomi POCO 2207117BPG (Android 13, API 33) y Samsung SM-G998U (Android 14, API 34) | Samsung SM-G998U |
+| Dispositivos | Xiaomi POCO 2207117BPG (Android 13, API 33): todo el QA. Además se instaló y abrió el APK en un Samsung SM-G998U (Android 14) el 24/09 | Samsung SM-G998U |
 
 Los pasos exactos para ejecutar el proyecto desde un clon limpio están en el
 [`README.md`](../../README.md) del repositorio.
@@ -303,7 +303,26 @@ porque así nunca tuvimos conflictos trabajando los dos sobre la misma rama.
 
 ### Javier
 
-_(pendiente)_
+Antes de este trabajo entendía git como una herramienta para guardar y subir
+cambios; no había seguido un flujo completo en el que cada paso deja evidencia
+verificable. Ahora entiendo la cadena completa: el issue define el problema y
+el criterio de aceptación; la rama (`feature/1-purchase-balance-rule`) aísla el
+trabajo; el pull request en Draft reúne los commits y la evidencia de QA; el QA
+en un celular físico comprueba el comportamiento real; la revisión de otra
+persona valida el trabajo antes de integrarlo; el CI repite las pruebas y la
+compilación en un entorno limpio; y la etiqueta `parcial-1` marca el commit
+integrado.
+
+Lo que más me sorprendió fue que cada paso me dio información que no esperaba.
+El CI falló en su primera corrida por un paso de `setup-android` que intentaba
+instalar un paquete `tools` que ya no existe, y lo arreglé quitando ese paso (mi
+commit `38eb79e`). Mi revisión no fue un trámite: uno de mis comentarios sobre
+`ReglaCompraTest` terminó en dos pruebas nuevas (16/16) y el otro se convirtió
+en el issue #7. También me sorprendió que Gradle no imprima nada cuando todo
+sale bien por `logging.level=quiet`, y que la instalación fallara con
+`INSTALL_FAILED_UPDATE_INCOMPATIBLE` porque mi celular ya tenía la app firmada
+con otra clave. Aprendí que un fallo documentado, con su causa y su solución,
+vale más que uno que se omite.
 
 ---
 

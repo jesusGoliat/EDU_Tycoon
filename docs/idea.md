@@ -57,7 +57,9 @@ ciclos.
 - Un jugador nuevo completa su **primera compra en menos de 2 minutos** desde
   que abre la app, sin ayuda externa.
 - Al salir y volver a entrar (Inicio, Atrás o cerrar la app), el jugador
-  **conserva el 100 % de su progreso**.
+  **conserva el 100 % de su progreso**. Hoy la partida sólo se guarda de forma
+  manual desde el menú de pausa; el guardado automático al salir (incluido el
+  cierre del proceso por Android) se sigue en el issue #4.
 - Ninguna compra deja el saldo en negativo y el jugador siempre ve cuánto le
   falta cuando no le alcanza.
 
@@ -73,7 +75,8 @@ ciclos.
 ## Funciones aplazadas (de forma deliberada)
 
 - Contratación y gestión de docentes.
-- Eventos aleatorios complejos (huelgas, recortes de presupuesto).
+- Eventos aleatorios más complejos que los 10 que ya tiene `EventEngine` (por
+  ejemplo, eventos encadenados o que pidan una decisión al jugador).
 - Reputación con efectos sobre la inscripción.
 - Escalado del texto según el sistema (issue #5).
 - Publicación en Google Play, multijugador y tablas de puntuación.
