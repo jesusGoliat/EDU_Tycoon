@@ -291,10 +291,6 @@ También apoyó la implementación de la regla de compra y sus pruebas.
 
 ## Conclusiones
 
-_(Pendiente: cada integrante escribe su conclusión en primera persona — qué
-entendía antes y qué entiende ahora del flujo issue → rama → PR → QA →
-revisión → CI → etiqueta, y qué le sorprendió.)_
-
 ### Jesús
 
 Antes de esta entrega veía el Pull Request como el último paso para "subir"
