@@ -367,8 +367,10 @@ pueden sumar o restar dinero en un ciclo.
 | Abrir otra vez | `evaluar` → `NivelMaximo` (2 ≥ 2). Botón `NIVEL MÁXIMO`, deshabilitado, sin aviso. | — |
 
 Las pruebas automáticas de este comportamiento están en `core/src/test/.../ReglaCompraTest.kt`
-(8 pruebas: saldo exacto, un peso de menos, mejora, nivel máximo, costos 0 y negativos, y que `evaluar`
-no modifica nada) y en `GameStateTest.kt` (`puedeComprar`, `gastar` y `costoMejora`).
+(10 pruebas: saldo exacto, un peso de menos, el faltante, mejora, mejora sin saldo, nivel máximo, costos
+0 y negativos, y tres de `evaluar` que comprueban que no modifica el saldo ni la propiedad, con saldo
+suficiente, con saldo insuficiente y en nivel máximo) y en `GameStateTest.kt` (`puedeComprar`, `gastar`
+y `costoMejora`).
 
 ---
 

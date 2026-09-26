@@ -239,7 +239,7 @@ flowchart LR
     borra los datos guardados en lugar de migrarlos.
 
 **Pruebas.** En `core/src/test/`: `GameStateTest`, `ReglaCompraTest` y `GameCycleEngineTest`
-(14 pruebas en total). En `android/src/androidTest/`: `DatabaseTest`, que necesita un dispositivo.
+(16 pruebas en total: 3 + 10 + 3). En `android/src/androidTest/`: `DatabaseTest`, que necesita un dispositivo.
 
 ---
 
