@@ -102,4 +102,24 @@ class ReglaCompraTest {
         assertFalse(escuela.comprada)
         assertEquals(0, escuela.nivel)
     }
+
+    @Test
+    fun `evaluar has no side effects when balance is insufficient`() {
+        val escuela = propiedad(precio = 120_000L)
+
+        assertEquals(ResultadoCompra.SaldoInsuficiente(20_000L), ReglaCompra.evaluar(escuela))
+        assertEquals(100_000L, GameState.dinero)
+        assertFalse(escuela.comprada)
+        assertEquals(0, escuela.nivel)
+    }
+
+    @Test
+    fun `evaluar has no side effects at max level`() {
+        val escuela = propiedad(precio = 1_000L, mejoraMax = 2, nivel = 2, comprada = true)
+
+        assertEquals(ResultadoCompra.NivelMaximo, ReglaCompra.evaluar(escuela))
+        assertEquals(100_000L, GameState.dinero)
+        assertTrue(escuela.comprada)
+        assertEquals(2, escuela.nivel)
+    }
 }
