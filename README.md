@@ -50,10 +50,11 @@ Detalle de cada carpeta, punto de entrada, diagrama de arquitectura y dependenci
 
 | | Javier (Windows) | Jesús (Ubuntu) |
 |---|---|---|
-| Sistema operativo | Windows 11 Home (10.0.26200) | Ubuntu (versión no registrada en este documento) |
-| IDE | Android Studio (compilación 261.26222.65) | No registrado en este documento |
-| JDK del sistema | Oracle JDK 24.0.2 | JDK 21 |
+| Sistema operativo | Windows 11 Home (10.0.26200) | Ubuntu 24.04.5 LTS (ThinkPad E460) |
+| IDE | Android Studio (compilación 261.26222.65) | Sin IDE: terminal con `./gradlew` |
+| JDK del sistema | Oracle JDK 24.0.2 | OpenJDK 21.0.12 |
 | JDK que usó Gradle | JetBrains JDK 21.0.11 (`C:\Users\JAVIER\.jdks\jbr-21.0.11`) | JDK 21 |
+| Herramientas | Git Bash, PowerShell, scrcpy 4.1 | adb 1.0.41, scrcpy 4.1 |
 | Dispositivo | Samsung SM-G998U, por USB | Xiaomi POCO 2207117BPG, Android 13 (API 33), por USB |
 
 Versiones que fija el proyecto (iguales para todos):
