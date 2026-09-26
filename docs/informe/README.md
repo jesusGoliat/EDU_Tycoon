@@ -275,7 +275,17 @@ git push origin parcial-1
 
 ## Uso de asistentes de IA
 
-_(Pendiente: el equipo definirá la redacción al terminar la práctica.)_
+Usamos **Claude (Anthropic), mediante Claude Code**, para:
+
+- **Crear los diagramas:** bosquejos de pantallas, estados alternos, pantalla
+  de juego y recorrido del usuario (`docs/diseno/`), y los diagramas de
+  `docs/arquitectura.md` y `docs/recorrido-codigo.md`. Cada figura lo indica en
+  su pie.
+- **Revisar los Pull Requests y los issues:** análisis del diff, detección de
+  defectos y redacción de issues (#3, #4, #5, #7) y de las descripciones de los
+  PR.
+
+También apoyó la implementación de la regla de compra y sus pruebas.
 
 ---
 
