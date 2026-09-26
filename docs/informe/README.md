@@ -287,7 +287,19 @@ revisión → CI → etiqueta, y qué le sorprendió.)_
 
 ### Jesús
 
-_(pendiente)_
+Antes de esta entrega veía el Pull Request como el último paso para "subir"
+código. Ahora entiendo que es donde se demuestra que el cambio funciona: el
+issue define qué se va a probar, el QA en un celular real lo confirma y la
+revisión de mi compañero encontró cosas que yo no había visto, como que la
+prueba de `evaluar()` sólo cubría el caso exitoso.
+
+Lo que más me sorprendió fue lo que apareció al probar en el dispositivo y no
+en las pruebas unitarias: el botón Atrás borraba la partida y el juego ignoraba
+el tamaño de texto del sistema. También que el CI fallara la primera vez por
+una acción de GitHub desactualizada y no por nuestro código; leer el log antes
+de tocar nada fue lo que permitió corregirlo en un solo commit. Para la
+siguiente entrega me quedo con dividir el trabajo por archivos desde el inicio,
+porque así nunca tuvimos conflictos trabajando los dos sobre la misma rama.
 
 ### Javier
 
