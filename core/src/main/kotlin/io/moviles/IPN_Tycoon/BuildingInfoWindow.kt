@@ -16,26 +16,14 @@ class BuildingInfoWindow(
         closeOnEscape()
         isModal = false
 
-        val costo: Long
-        val btnTexto: String
-        val puedeMejorar: Boolean
+        // La regla decide antes de tocar el botón; la ventana sólo la refleja.
+        val resultado = ReglaCompra.evaluar(data)
+        val costo     = ReglaCompra.costo(data)
 
-        when {
-            !data.comprada -> {
-                costo        = data.precio
-                btnTexto     = "COMPRAR  \$${fmt(costo)}"
-                puedeMejorar = true
-            }
-            data.nivel < data.mejoraMax -> {
-                costo        = GameState.costoMejora(data)
-                btnTexto     = "MEJORAR LVL ${data.nivel + 1}  \$${fmt(costo)}"
-                puedeMejorar = true
-            }
-            else -> {
-                costo        = 0L
-                btnTexto     = "NIVEL MÁXIMO"
-                puedeMejorar = false
-            }
+        val btnTexto = when {
+            resultado == ResultadoCompra.NivelMaximo -> "NIVEL MÁXIMO"
+            !data.comprada -> "COMPRAR  \$${fmt(costo)}"
+            else           -> "MEJORAR LVL ${data.nivel + 1}  \$${fmt(costo)}"
         }
 
         add(scene2d.table {
@@ -89,27 +77,27 @@ class BuildingInfoWindow(
             }.cell(padTop = 6f, padBottom = 4f)
             row()
 
+            // ── Aviso (saldo insuficiente / costo inválido) ───────────
+            val aviso = label(mensaje(resultado).orEmpty()) {
+                color = Color.RED
+                isVisible = text.isNotEmpty()
+            }
+            row()
+
             // ── Botón acción ──────────────────────────────────────────
             textButton(btnTexto) {
-                isDisabled = !puedeMejorar
+                isDisabled = resultado != ResultadoCompra.Exitosa
 
                 onChange {
-                    if (!puedeMejorar) return@onChange
+                    if (isDisabled) return@onChange
 
-                    if (!GameState.puedeComprar(costo)) {
-                        setText("¡Saldo insuficiente!")
-                        color = Color.RED
+                    // El saldo pudo cambiar con la ventana abierta: aplicar vuelve a evaluar.
+                    val final = ReglaCompra.aplicar(data)
+                    if (final != ResultadoCompra.Exitosa) {
+                        aviso.setText(mensaje(final).orEmpty())
+                        aviso.isVisible = true
                         isDisabled = true
                         return@onChange
-                    }
-
-                    GameState.gastar(costo)
-
-                    if (!data.comprada) {
-                        data.comprada = true
-                        data.nivel    = 1
-                    } else {
-                        data.nivel++
                     }
 
                     onBuildingChanged()
@@ -123,6 +111,13 @@ class BuildingInfoWindow(
     }
 
     fun show(stage: Stage) { stage.addActor(this) }
+
+    private fun mensaje(resultado: ResultadoCompra): String? = when (resultado) {
+        is ResultadoCompra.SaldoInsuficiente -> "Te faltan \$${fmt(resultado.faltante)}"
+        ResultadoCompra.CostoInvalido        -> "Costo inválido: no se puede comprar"
+        ResultadoCompra.NivelMaximo,
+        ResultadoCompra.Exitosa              -> null
+    }
 
     private fun fmt(v: Long) = when {
         v >= 1_000_000L -> "${"%.2f".format(v / 1_000_000.0)}M"
