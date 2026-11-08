@@ -34,8 +34,8 @@ Columnas: **Backlog · Por hacer · En progreso · En revisión · Terminado**.
 | [#15](https://github.com/jesusGoliat/EDU_Tycoon/pull/15) | fix: render the inverted exclamation mark in the victory dialog | #11 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
 | [#16](https://github.com/jesusGoliat/EDU_Tycoon/pull/16) | docs: add the Entrega 2 QA matrix and verification index | #12 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
 | [#17](https://github.com/jesusGoliat/EDU_Tycoon/pull/17) | chore: publish release 1.3.2 (versionCode 6) | #13 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
-| PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
-| PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
+| PENDIENTE | feat: show the rival market share in the pause stats | #18 | Javier | Jesús | PENDIENTE | PENDIENTE |
+| PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | #19 | Javier | Jesús | PENDIENTE | PENDIENTE |
 
 Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
 
@@ -49,8 +49,8 @@ Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
 | [#11](https://github.com/jesusGoliat/EDU_Tycoon/issues/11) | fix: render the inverted exclamation mark in the victory dialog | abierta |
 | [#12](https://github.com/jesusGoliat/EDU_Tycoon/issues/12) | docs: add the Entrega 2 QA matrix and verification index | abierta |
 | [#13](https://github.com/jesusGoliat/EDU_Tycoon/issues/13) | chore: publish release 1.3.2 (versionCode 6) | abierta |
-| PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE |
-| PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE |
+| [#18](https://github.com/jesusGoliat/EDU_Tycoon/issues/18) | feat: show the rival market share in the pause stats | abierta, asignada a Javier |
+| [#19](https://github.com/jesusGoliat/EDU_Tycoon/issues/19) | fix: repair DatabaseTest and cover the Room 4→5 migration | abierta, asignada a Javier |
 
 ## Publicaciones en Google Play
 
