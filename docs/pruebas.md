@@ -137,9 +137,10 @@ las clases de `rival/` y `engine/`. Se ejecutan también en CI en cada PR.
 | CP-R7 | Fin de partida: derrota y victoria | Alcanzar ≤ 25 % o ≥ 70 % de cuota durante 3 ciclos después del ciclo 10 | El diálogo aparece una sola vez; la derrota dice «Derrota» y la victoria «¡Victoria!» | Derrota al 0 % con el título «Derrota»; victoria al 80 % con «¡Victoria!» y el signo de apertura visible. | ✅ Pasa | `qa-cp-r7-derrota.png`, `qa-cp-r7-victoria.png`, `qa-cp-r7-log.txt`, `qa-cp-r7-victoria-log.txt` |
 | CP-R8 | Regresión: StatsWindow (Javier) | Abrir pausa → Estadísticas; comparar cuota e ingreso con el HUD | Las cifras coinciden con el HUD y con `MercadoAlumnos` | Pendiente: depende del PR de Javier (#18). | ⏳ Pendiente | — |
 
-Evidencias en [`docs/evidencia/edutycoon-ia/`](evidencia/edutycoon-ia/). Nombres
-de imagen individual: `gonzalez-jesus-edutycoon-ia.png` y
-`gamez-javier-edutycoon-ia.png`.
+Evidencias en [`docs/evidencia/edutycoon-ia/`](evidencia/edutycoon-ia/).
+Imagen individual de Jesús:
+[`gonzalez-jesus-edutycoon-ia.png`](evidencia/edutycoon-ia/gonzalez-jesus-edutycoon-ia.png).
+La de Javier (`gamez-javier-edutycoon-ia.png`) queda pendiente de su contribución.
 
 ### Observaciones
 
