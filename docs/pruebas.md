@@ -85,8 +85,8 @@ Evidencias en [`docs/evidencia/entrega-1/qa/`](evidencia/entrega-1/qa/).
 
 ## Característica #2 — Instituto Rival controlado por IA (Edutycoon-IA)
 
-> **Plan escrito antes de ejecutar.** Los resultados reales se llenan en un
-> commit posterior, después de correr los casos en el celular físico.
+> Plan escrito antes de ejecutar y resultados llenados después de correr los
+> casos en el celular físico el 08/11/2026.
 
 ### Entorno
 
@@ -95,24 +95,25 @@ Evidencias en [`docs/evidencia/entrega-1/qa/`](evidencia/entrega-1/qa/).
 | Dispositivo | Xiaomi 25062PC34G (físico, por USB) |
 | Android | 16 (API 36) |
 | App | 1.3.1 (`versionCode 5`), APK debug |
-| Código probado | rama `feature/9-rival-ia` @ `<SHA>` (se completa al ejecutar) |
+| Código probado | rama `feature/9-rival-ia` @ `70463a2` |
 | Compilación | JDK 21, Gradle 9.5.0, AGP 9.3.1 (`./gradlew :android:assembleDebug`) |
-| Fecha | __/11/2026 |
+| Fecha | 08/11/2026 |
 | Probó | Jesús Ángel González Arellano (`jesusGoliat`) |
+| Nota de ejecución | Para CP-R3 y CP-R7 se usó una APK temporal con 100 M (`DINERO_INICIAL_TEST`); el cambio no se commiteó |
 
 ### Criterios de aceptación
 
 1. **Dado** un dispositivo con la partida en curso, **cuando** pasan al menos 4 ciclos, **entonces** el rival actúa (compra o mejora) y el HUD muestra `Tú X% | Rival Y%` sumando 100 %.
 2. **Dado** un edificio comprado por el rival, **cuando** el jugador abre su ventana, **entonces** dice «Propiedad del Instituto Rival (Nivel N)» y no ofrece botón de compra.
 3. **Dado** un guardado con rival en curso, **cuando** se guarda, se sale y se vuelve a cargar, **entonces** el rival conserva sus edificios y su dinero.
-4. **Dado** un edificio comprado por el jugador, **cuando** se abre su ventana, **entonces** «Ingreso/ciclo» coincide con lo que acredita `EconomyEngine` (issue #3).
+4. **Dado** un edificio comprado por el jugador, **cuando** se abre su ventana, **entonces** «Ingreso/ciclo» usa el mismo factor ×100 que `EconomyEngine` y ya no muestra 10× menos (issue #3).
 5. **Dado** que el jugador alcanza la victoria, **cuando** se muestra el diálogo, **entonces** el título dice «¡Victoria!» (issue #11).
 
 ### Riesgos
 
 | # | Riesgo | Impacto | Caso que lo cubre |
 |---|---|---|---|
-| R1 | La migración Room 4→5 borra partidas existentes | Pérdida de datos del jugador | CP-R4 |
+| R1 | La migración Room 4→5 borra partidas existentes | Pérdida de datos del jugador | CP-R4 (persistencia) y el test de migración de Javier (#19) |
 | R2 | El balance del rival hace la partida trivial o imposible | Mala experiencia de juego | CP-R1, CP-R7 |
 | R3 | El merge de `rival-ai` con `main` rompe la regla de compra de la Entrega 1 | Regresión de una característica ya entregada | CP-R3 |
 | R4 | El rival bloquea una compra legítima o permite comprar un edificio ajeno | Regla de juego incorrecta | CP-R2 |
@@ -127,14 +128,14 @@ las clases de `rival/` y `engine/`. Se ejecutan también en CI en cada PR.
 
 | ID | Caso | Pasos | Resultado esperado | Resultado real | Estado | Evidencia |
 |---|---|---|---|---|---|---|
-| CP-R1 | Ruta feliz: rival activo | Partida nueva → jugar hasta el ciclo 4 → revisar HUD y log `RIVAL` | El rival no actúa en los ciclos 1–3; en el 4 compra o mejora; la cuota suma 100 % | — | ⏳ Pendiente | `qa-cp-r1.png` |
-| CP-R2 | Estado alterno: propiedad del rival y saldo insuficiente | Abrir un edificio que ya compró el rival; después abrir uno caro con poco saldo | El edificio del rival no tiene botón; el caro muestra el faltante y no cobra | — | ⏳ Pendiente | `qa-cp-r2.png` |
-| CP-R3 | Regresión: regla de compra e ingreso | Comprar la Cafetería, mejorarla y comparar «Ingreso/ciclo» con el saldo acreditado | La compra y la mejora siguen funcionando; el ingreso mostrado coincide con el acreditado | — | ⏳ Pendiente | `qa-cp-r3.png` |
-| CP-R4 | Navegación y estado: guardar, salir y recargar | Guardar en un slot → salir al menú → cargar → revisar rival y HUD | El rival conserva edificios y dinero; el HUD reconstruye la cuota; no se pierde la partida | — | ⏳ Pendiente | `qa-cp-r4.png` |
-| CP-R5 | Accesibilidad: texto ampliado y TalkBack | Tamaño de texto del sistema al máximo → abrir el juego; recorrer un control con TalkBack | Los textos son legibles; un control se puede recorrer y anunciar. Si el ajuste se ignora, se registra como limitación preexistente (#5) | — | ⏳ Pendiente | `qa-cp-r5.png` |
-| CP-R6 | Compatibilidad: sin red | Activar modo avión → jugar y abrir ventanas | El juego funciona igual porque es 100 % local | — | ⏳ Pendiente | `qa-cp-r6.png` |
-| CP-R7 | Fin de partida: victoria | Alcanzar una cuota ≥ 70 % durante 3 ciclos después del ciclo 10 | El diálogo aparece una sola vez, dice «¡Victoria!» y «Continuar jugando» lo cierra | — | ⏳ Pendiente | `qa-cp-r7.png` |
-| CP-R8 | Regresión: StatsWindow (Javier) | Abrir pausa → Estadísticas; comparar cuota e ingreso con el HUD | Las cifras coinciden con el HUD y con `MercadoAlumnos` | — | ⏳ Pendiente | `qa-cp-r8.png` |
+| CP-R1 | Ruta feliz: rival activo | Partida nueva → jugar hasta el ciclo 4 → revisar HUD y log `RIVAL` | El rival no actúa en los ciclos 1–3; en el 4 compra o mejora; la cuota suma 100 % | Al ciclo 4 compró la Cafetería por $150.0K; el HUD pasó a `Tú 0% \| Rival 100%` y apareció «Instituto Rival compró: Cafetería». | ✅ Pasa | `qa-cp-r1.png`, `qa-cp-r1-log.txt` |
+| CP-R2 | Estado alterno: propiedad del rival y saldo insuficiente | Abrir un edificio que ya compró el rival; después abrir uno caro con poco saldo | El edificio del rival no tiene botón; el caro muestra el faltante y no cobra | La Cafetería mostró «Propiedad del Instituto Rival (Nivel 1)» sin botón; Turismo ($900.0K) mostró `COMPRAR` deshabilitado y «Te faltan $400.0K». | ✅ Pasa | `qa-cp-r2a-propiedad-rival.png`, `qa-cp-r2b-saldo-insuficiente.png` |
+| CP-R3 | Regresión: regla de compra e ingreso | Comprar un edificio, mejorarlo y comparar «Ingreso/ciclo» con el factor de la economía | La compra y la mejora siguen funcionando; el ingreso mostrado usa el mismo ×100 y ya no es 10× menor | ESCOM se compró y se mejoró a 2/2; «Ingreso/ciclo: $120.0K» (600 × 2 × 100), sin el factor ×10. El crédito real aplica además el factor de mercado, documentado en `MercadoAlumnos`. | ✅ Pasa | `qa-cp-r3-escuela-nivel2.png` |
+| CP-R4 | Navegación y estado: guardar, salir y recargar | Guardar en un slot → salir al menú → cargar → revisar rival y HUD | El rival conserva edificios y dinero; el HUD reconstruye la cuota; no se pierde la partida | «Guardado correctamente»; al recargar el HUD volvió a `Tú 80% \| Rival 20%` y la Cafetería siguió como «Propiedad del Instituto Rival (Nivel 2)». | ✅ Pasa | `qa-cp-r4a-guardado.png`, `qa-cp-r4b-cargado.png`, `qa-cp-r4c-propiedad-rival-nivel2.png` |
+| CP-R5 | Accesibilidad: texto ampliado | Tamaño de texto del sistema al máximo (XXL) → abrir el juego y una ventana | Los textos crecen o siguen legibles; si el ajuste se ignora, se registra como limitación preexistente (#5) | Con `font_scale = 1.45` los textos del juego quedaron exactamente igual; limitación preexistente registrada en #5. | ❌ Falla (preexistente #5) | `qa-cp-r5a-texto-xxl.png`, `qa-cp-r5-font-scale.txt` |
+| CP-R6 | Compatibilidad: sin red | Activar modo avión → jugar y abrir ventanas | El juego funciona igual porque es 100 % local | Con `airplane_mode_on = 1` el HUD, los ciclos y las ventanas siguieron funcionando; el manifiesto no declara permiso de internet. | ✅ Pasa | `qa-cp-r6-sin-red.png`, `qa-cp-r6-airplane.txt` |
+| CP-R7 | Fin de partida: derrota y victoria | Alcanzar ≤ 25 % o ≥ 70 % de cuota durante 3 ciclos después del ciclo 10 | El diálogo aparece una sola vez; la derrota dice «Derrota» y la victoria «¡Victoria!» | Derrota al 0 % con el título «Derrota»; victoria al 80 % con «¡Victoria!» y el signo de apertura visible. | ✅ Pasa | `qa-cp-r7-derrota.png`, `qa-cp-r7-victoria.png`, `qa-cp-r7-log.txt`, `qa-cp-r7-victoria-log.txt` |
+| CP-R8 | Regresión: StatsWindow (Javier) | Abrir pausa → Estadísticas; comparar cuota e ingreso con el HUD | Las cifras coinciden con el HUD y con `MercadoAlumnos` | Pendiente: depende del PR de Javier (#18). | ⏳ Pendiente | — |
 
 Evidencias en [`docs/evidencia/edutycoon-ia/`](evidencia/edutycoon-ia/). Nombres
 de imagen individual: `gonzalez-jesus-edutycoon-ia.png` y
@@ -146,6 +147,11 @@ de imagen individual: `gonzalez-jesus-edutycoon-ia.png` y
   [`docs/rival-ia.md`](rival-ia.md#qa-manual-en-dispositivo) (CP-R1 a CP-R5) y
   en [`docs/evidencia/rival-ia/`](evidencia/rival-ia/). Se repite sobre el SHA
   final porque el código se integró con el `main` de la Entrega 1.
+- Para CP-R3 y CP-R7 se usó una compilación local temporal que iniciaba con
+  100 M (`GameState.DINERO_INICIAL_TEST` en `SeleccionPartida.kt`). Ese cambio
+  no se commiteó y la APK normal se reinstaló al terminar.
+- CP-R5 se limita al texto ampliado; el ajuste del sistema se ignora por una
+  limitación preexistente de libGDX (#5), no por esta característica.
 
 ### Defectos registrados
 
