@@ -43,7 +43,7 @@ integrada con el PR #2). Ver [`docs/idea.md`](docs/idea.md).
 
 ## Uso de asistentes de IA (Edutycoon-IA)
 
-<!-- PENDIENTE: la redacta Jesús. El agente no completa este texto. -->
+Para el desarrollo de Edutycoon-IA se utilizó **Claude (Anthropic) a través de Claude Code** como apoyo en la implementación del módulo `rival/`, su integración con el ciclo de juego, las pruebas unitarias y la documentación técnica. El alcance, la validación en dispositivo físico y la revisión del código fueron realizadas por los integrantes del equipo.
 
 ---
 
