@@ -1,0 +1,83 @@
+# Entrega 2 — Prueba cerrada y primera actualización en Google Play
+
+> Índice de verificación de la Entrega 2 de **EduTycoon**. Se completa al cerrar
+> la entrega; los datos que aún no existen se marcan como `PENDIENTE`.
+
+## Datos de la entrega
+
+| Campo | Valor |
+|---|---|
+| Repositorio | <https://github.com/jesusGoliat/EDU_Tycoon> |
+| Paquete | `io.moviles.IPN_Tycoon` |
+| Materia | Desarrollo de aplicaciones móviles nativas — IPN ESCOM |
+| Profesor | Gabriel Hurtado Avilés |
+| Equipo | Jesús Ángel González Arellano (`jesusGoliat`) · Javier Gamez (`Javier-Gamez`) |
+| Fecha límite | 09/11/2026 |
+| Tag | `parcial-2` (PENDIENTE) |
+
+## Tablero Scrum
+
+| Elemento | Liga |
+|---|---|
+| Tablero en GitHub Projects | PENDIENTE |
+| Captura del tablero y del sprint | [`docs/evidencia/entrega-2/scrum.png`](evidencia/entrega-2/scrum.png) (PENDIENTE) |
+
+Columnas: **Backlog · Por hacer · En progreso · En revisión · Terminado**.
+
+## Pull Requests fusionados
+
+| PR | Título | Issue | Autor | Revisor | CI | Merge |
+|---|---|---|---|---|---|---|
+| [#2](https://github.com/jesusGoliat/EDU_Tycoon/pull/2) | feat: block purchases that exceed available balance | #1 | Jesús | Javier | verde | 24/09/2026 |
+| [#10](https://github.com/jesusGoliat/EDU_Tycoon/pull/10) | feat: add AI-controlled rival institute | #9 | Jesús | PENDIENTE | verde | PENDIENTE |
+| PENDIENTE | fix: show the economy income multiplier in the building window | #3 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| PENDIENTE | fix: render the inverted exclamation mark in the victory dialog | #11 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
+| PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
+| PENDIENTE | chore: release 1.3.2 | PENDIENTE | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+
+Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
+
+## Issues
+
+| Issue | Título | Estado |
+|---|---|---|
+| [#1](https://github.com/jesusGoliat/EDU_Tycoon/issues/1) | feat: block purchases and upgrades that exceed available balance | cerrada |
+| [#3](https://github.com/jesusGoliat/EDU_Tycoon/issues/3) | fix: building window shows 10x lower income than EconomyEngine credits | abierta (se cierra con el PR de corrección) |
+| [#9](https://github.com/jesusGoliat/EDU_Tycoon/issues/9) | feat: add AI-controlled rival institute (Edutycoon-IA) | abierta |
+| [#11](https://github.com/jesusGoliat/EDU_Tycoon/issues/11) | fix: render the inverted exclamation mark in the victory dialog | abierta |
+| [#12](https://github.com/jesusGoliat/EDU_Tycoon/issues/12) | docs: add the Entrega 2 QA matrix and verification index | abierta |
+| PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE |
+| PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE |
+| PENDIENTE | chore: release 1.3.2 | PENDIENTE |
+
+## Publicaciones en Google Play
+
+| Versión | versionCode | Fecha | Canal | Estado | Evidencia |
+|---|---|---|---|---|---|
+| 1.3.1 | 5 | 14/08/2026 | Prueba cerrada | Publicada ✅ | [`play-cerrada-v1.png`](evidencia/entrega-2/play-cerrada-v1.png) (PENDIENTE de captura) |
+| 1.3.2 | 6 | __/11/2026 | Prueba cerrada | PENDIENTE | [`play-actualizacion-v2.png`](evidencia/entrega-2/play-actualizacion-v2.png) (PENDIENTE) |
+
+La ficha pública muestra **Última actualización: 14 ago 2026** y el paquete
+`io.moviles.IPN_Tycoon`, lo que confirma la primera publicación.
+
+## Integración continua
+
+| Check | Estado | Liga |
+|---|---|---|
+| `build` del PR #10 | verde | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42527825673> |
+| `build` del PR de corrección | PENDIENTE | PENDIENTE |
+| `build` del PR de Javier | PENDIENTE | PENDIENTE |
+| `build` del PR de release | PENDIENTE | PENDIENTE |
+
+## Pruebas y QA
+
+- Matriz de pruebas: [`docs/pruebas.md`](pruebas.md#entrega-2--edutycoon-ia-en-prueba-cerrada-de-google-play).
+- Evidencias: [`docs/evidencia/entrega-2/`](evidencia/entrega-2/).
+- Imagen individual de cada integrante:
+  - `gonzalez-jesus-entrega2.png` (PENDIENTE)
+  - `gamez-javier-entrega2.png` (PENDIENTE)
+
+## Declaración de uso de asistentes de IA
+
+<!-- PENDIENTE: la redacta Jesús. El agente no completa este texto. -->

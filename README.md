@@ -41,6 +41,21 @@ integrada con el PR #2). Ver [`docs/idea.md`](docs/idea.md).
 | Ejecución de cada integrante | [`docs/evidencia/entrega-1/`](docs/evidencia/entrega-1/) |
 | PR de documentación | [#6 — docs: add Entrega 1 idea, design, architecture and setup guides](https://github.com/jesusGoliat/EDU_Tycoon/pull/6) |
 
+### Entrega 2 — verificación
+
+| Evidencia | Liga |
+|---|---|
+| Índice de la Entrega 2 | [`docs/entrega-2.md`](docs/entrega-2.md) |
+| Matriz de pruebas | [`docs/pruebas.md`](docs/pruebas.md#entrega-2--edutycoon-ia-en-prueba-cerrada-de-google-play) |
+| Evidencias | [`docs/evidencia/entrega-2/`](docs/evidencia/entrega-2/) |
+| Tablero Scrum | PENDIENTE |
+| Primera publicación `1.3.1 (5)` | PENDIENTE de captura |
+| Actualización `1.3.2 (6)` | PENDIENTE |
+
+## Uso de asistentes de IA (Entrega 2)
+
+<!-- PENDIENTE: la redacta Jesús. El agente no completa este texto. -->
+
 ---
 
 ## Estructura del repositorio
