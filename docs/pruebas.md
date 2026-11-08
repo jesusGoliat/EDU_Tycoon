@@ -80,3 +80,78 @@ Evidencias en [`docs/evidencia/entrega-1/qa/`](evidencia/entrega-1/qa/).
 | #4 | fix: Back button from the map loses the current game progress | QA-05, B-05 |
 | #5 | fix: game text ignores Android system text size (accessibility) | QA-06, B-07 |
 | #7 | fix: building window keeps stale balance and button state while open | Revisión del PR #2 |
+
+---
+
+## Característica #2 — Instituto Rival controlado por IA (Edutycoon-IA)
+
+> **Plan escrito antes de ejecutar.** Los resultados reales se llenan en un
+> commit posterior, después de correr los casos en el celular físico.
+
+### Entorno
+
+| Campo | Valor |
+|---|---|
+| Dispositivo | Xiaomi 25062PC34G (físico, por USB) |
+| Android | 16 (API 36) |
+| App | 1.3.1 (`versionCode 5`), APK debug |
+| Código probado | rama `feature/9-rival-ia` @ `<SHA>` (se completa al ejecutar) |
+| Compilación | JDK 21, Gradle 9.5.0, AGP 9.3.1 (`./gradlew :android:assembleDebug`) |
+| Fecha | __/11/2026 |
+| Probó | Jesús Ángel González Arellano (`jesusGoliat`) |
+
+### Criterios de aceptación
+
+1. **Dado** un dispositivo con la partida en curso, **cuando** pasan al menos 4 ciclos, **entonces** el rival actúa (compra o mejora) y el HUD muestra `Tú X% | Rival Y%` sumando 100 %.
+2. **Dado** un edificio comprado por el rival, **cuando** el jugador abre su ventana, **entonces** dice «Propiedad del Instituto Rival (Nivel N)» y no ofrece botón de compra.
+3. **Dado** un guardado con rival en curso, **cuando** se guarda, se sale y se vuelve a cargar, **entonces** el rival conserva sus edificios y su dinero.
+4. **Dado** un edificio comprado por el jugador, **cuando** se abre su ventana, **entonces** «Ingreso/ciclo» coincide con lo que acredita `EconomyEngine` (issue #3).
+5. **Dado** que el jugador alcanza la victoria, **cuando** se muestra el diálogo, **entonces** el título dice «¡Victoria!» (issue #11).
+
+### Riesgos
+
+| # | Riesgo | Impacto | Caso que lo cubre |
+|---|---|---|---|
+| R1 | La migración Room 4→5 borra partidas existentes | Pérdida de datos del jugador | CP-R4 |
+| R2 | El balance del rival hace la partida trivial o imposible | Mala experiencia de juego | CP-R1, CP-R7 |
+| R3 | El merge de `rival-ai` con `main` rompe la regla de compra de la Entrega 1 | Regresión de una característica ya entregada | CP-R3 |
+| R4 | El rival bloquea una compra legítima o permite comprar un edificio ajeno | Regla de juego incorrecta | CP-R2 |
+
+### Pruebas automáticas
+
+`./gradlew :core:test` → **54/54** en verde: 10 de `ReglaCompraTest`, 2 de
+`PipelineCompletoTest` (Economy + Students + Rival en un mismo motor) y 42 de
+las clases de `rival/` y `engine/`. Se ejecutan también en CI en cada PR.
+
+### Pruebas manuales
+
+| ID | Caso | Pasos | Resultado esperado | Resultado real | Estado | Evidencia |
+|---|---|---|---|---|---|---|
+| CP-R1 | Ruta feliz: rival activo | Partida nueva → jugar hasta el ciclo 4 → revisar HUD y log `RIVAL` | El rival no actúa en los ciclos 1–3; en el 4 compra o mejora; la cuota suma 100 % | — | ⏳ Pendiente | `qa-cp-r1.png` |
+| CP-R2 | Estado alterno: propiedad del rival y saldo insuficiente | Abrir un edificio que ya compró el rival; después abrir uno caro con poco saldo | El edificio del rival no tiene botón; el caro muestra el faltante y no cobra | — | ⏳ Pendiente | `qa-cp-r2.png` |
+| CP-R3 | Regresión: regla de compra e ingreso | Comprar la Cafetería, mejorarla y comparar «Ingreso/ciclo» con el saldo acreditado | La compra y la mejora siguen funcionando; el ingreso mostrado coincide con el acreditado | — | ⏳ Pendiente | `qa-cp-r3.png` |
+| CP-R4 | Navegación y estado: guardar, salir y recargar | Guardar en un slot → salir al menú → cargar → revisar rival y HUD | El rival conserva edificios y dinero; el HUD reconstruye la cuota; no se pierde la partida | — | ⏳ Pendiente | `qa-cp-r4.png` |
+| CP-R5 | Accesibilidad: texto ampliado y TalkBack | Tamaño de texto del sistema al máximo → abrir el juego; recorrer un control con TalkBack | Los textos son legibles; un control se puede recorrer y anunciar. Si el ajuste se ignora, se registra como limitación preexistente (#5) | — | ⏳ Pendiente | `qa-cp-r5.png` |
+| CP-R6 | Compatibilidad: sin red | Activar modo avión → jugar y abrir ventanas | El juego funciona igual porque es 100 % local | — | ⏳ Pendiente | `qa-cp-r6.png` |
+| CP-R7 | Fin de partida: victoria | Alcanzar una cuota ≥ 70 % durante 3 ciclos después del ciclo 10 | El diálogo aparece una sola vez, dice «¡Victoria!» y «Continuar jugando» lo cierra | — | ⏳ Pendiente | `qa-cp-r7.png` |
+| CP-R8 | Regresión: StatsWindow (Javier) | Abrir pausa → Estadísticas; comparar cuota e ingreso con el HUD | Las cifras coinciden con el HUD y con `MercadoAlumnos` | — | ⏳ Pendiente | `qa-cp-r8.png` |
+
+Evidencias en [`docs/evidencia/edutycoon-ia/`](evidencia/edutycoon-ia/). Nombres
+de imagen individual: `gonzalez-jesus-edutycoon-ia.png` y
+`gamez-javier-edutycoon-ia.png`.
+
+### Observaciones
+
+- La QA preliminar del rival del 2026-11-06 está en
+  [`docs/rival-ia.md`](rival-ia.md#qa-manual-en-dispositivo) (CP-R1 a CP-R5) y
+  en [`docs/evidencia/rival-ia/`](evidencia/rival-ia/). Se repite sobre el SHA
+  final porque el código se integró con el `main` de la Entrega 1.
+
+### Defectos registrados
+
+| Issue | Título | Origen | Estado |
+|---|---|---|---|
+| #3 | fix: building window shows 10x lower income than EconomyEngine credits | QA-01/03 y revisión de #2 | Corregido en este PR |
+| #11 | fix: render the inverted exclamation mark in the victory dialog | QA del rival | Corregido en este PR |
+| #18 | feat: show the rival market share in the pause stats | QA del rival | Asignado a Javier |
+| #19 | fix: repair DatabaseTest and cover the Room 4→5 migration | QA del rival | Asignado a Javier |

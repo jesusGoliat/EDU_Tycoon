@@ -41,6 +41,10 @@ integrada con el PR #2). Ver [`docs/idea.md`](docs/idea.md).
 | Ejecución de cada integrante | [`docs/evidencia/entrega-1/`](docs/evidencia/entrega-1/) |
 | PR de documentación | [#6 — docs: add Entrega 1 idea, design, architecture and setup guides](https://github.com/jesusGoliat/EDU_Tycoon/pull/6) |
 
+## Uso de asistentes de IA (Edutycoon-IA)
+
+<!-- PENDIENTE: la redacta Jesús. El agente no completa este texto. -->
+
 ---
 
 ## Estructura del repositorio
