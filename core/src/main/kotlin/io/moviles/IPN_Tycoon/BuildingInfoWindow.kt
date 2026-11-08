@@ -3,6 +3,7 @@ package io.moviles.IPN_Tycoon
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.kotcrab.vis.ui.widget.VisWindow
+import io.moviles.IPN_Tycoon.rival.RivalState
 import ktx.actors.onChange
 import ktx.scene2d.*
 
@@ -20,7 +21,11 @@ class BuildingInfoWindow(
         val resultado = ReglaCompra.evaluar(data)
         val costo     = ReglaCompra.costo(data)
 
+        // Si el rival ya compró el edificio, la ventana sólo lo informa.
+        val nivelRival = if (data.comprada) 0 else (RivalState.edificios[data.id] ?: 0)
+
         val btnTexto = when {
+            nivelRival > 0 -> ""
             resultado == ResultadoCompra.NivelMaximo -> "NIVEL MÁXIMO"
             !data.comprada -> "COMPRAR  \$${fmt(costo)}"
             else           -> "MEJORAR LVL ${data.nivel + 1}  \$${fmt(costo)}"
@@ -44,7 +49,12 @@ class BuildingInfoWindow(
             // ── Stats ─────────────────────────────────────────────────
             label("Capacidad: ${data.capacidad} alumnos"); row()
 
-            if (data.comprada) {
+            if (nivelRival > 0) {
+                label("Propiedad del Instituto Rival (Nivel $nivelRival)") {
+                    color = Color.SALMON
+                }.cell(padTop = 6f)
+                row()
+            } else if (data.comprada) {
                 label("Nivel actual: ${data.nivel} / ${data.mejoraMax}") {
                     color = Color.CYAN
                 }.cell(padBottom = 2f)
@@ -85,11 +95,17 @@ class BuildingInfoWindow(
             row()
 
             // ── Botón acción ──────────────────────────────────────────
-            textButton(btnTexto) {
+            if (nivelRival == 0) textButton(btnTexto) {
                 isDisabled = resultado != ResultadoCompra.Exitosa
 
                 onChange {
                     if (isDisabled) return@onChange
+                    // El rival pudo comprarlo mientras esta ventana estaba abierta.
+                    if (!data.comprada && RivalState.posee(data.id)) {
+                        setText("Propiedad del rival")
+                        isDisabled = true
+                        return@onChange
+                    }
 
                     // El saldo pudo cambiar con la ventana abierta: aplicar vuelve a evaluar.
                     val final = ReglaCompra.aplicar(data)
