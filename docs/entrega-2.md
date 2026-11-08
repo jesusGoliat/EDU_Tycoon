@@ -30,11 +30,12 @@ Columnas: **Backlog · Por hacer · En progreso · En revisión · Terminado**.
 |---|---|---|---|---|---|---|
 | [#2](https://github.com/jesusGoliat/EDU_Tycoon/pull/2) | feat: block purchases that exceed available balance | #1 | Jesús | Javier | verde | 24/09/2026 |
 | [#10](https://github.com/jesusGoliat/EDU_Tycoon/pull/10) | feat: add AI-controlled rival institute | #9 | Jesús | PENDIENTE | verde | PENDIENTE |
-| PENDIENTE | fix: show the economy income multiplier in the building window | #3 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
-| PENDIENTE | fix: render the inverted exclamation mark in the victory dialog | #11 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| [#14](https://github.com/jesusGoliat/EDU_Tycoon/pull/14) | fix: show the economy income multiplier in the building window | #3 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| [#15](https://github.com/jesusGoliat/EDU_Tycoon/pull/15) | fix: render the inverted exclamation mark in the victory dialog | #11 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| [#16](https://github.com/jesusGoliat/EDU_Tycoon/pull/16) | docs: add the Entrega 2 QA matrix and verification index | #12 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
+| [#17](https://github.com/jesusGoliat/EDU_Tycoon/pull/17) | chore: publish release 1.3.2 (versionCode 6) | #13 | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
 | PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
 | PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE | Javier | Jesús | PENDIENTE | PENDIENTE |
-| PENDIENTE | chore: release 1.3.2 | PENDIENTE | Jesús | PENDIENTE | PENDIENTE | PENDIENTE |
 
 Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
 
@@ -47,9 +48,9 @@ Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
 | [#9](https://github.com/jesusGoliat/EDU_Tycoon/issues/9) | feat: add AI-controlled rival institute (Edutycoon-IA) | abierta |
 | [#11](https://github.com/jesusGoliat/EDU_Tycoon/issues/11) | fix: render the inverted exclamation mark in the victory dialog | abierta |
 | [#12](https://github.com/jesusGoliat/EDU_Tycoon/issues/12) | docs: add the Entrega 2 QA matrix and verification index | abierta |
+| [#13](https://github.com/jesusGoliat/EDU_Tycoon/issues/13) | chore: publish release 1.3.2 (versionCode 6) | abierta |
 | PENDIENTE | feat: show the rival market share in the pause stats | PENDIENTE |
 | PENDIENTE | fix: repair DatabaseTest and cover the Room 4→5 migration | PENDIENTE |
-| PENDIENTE | chore: release 1.3.2 | PENDIENTE |
 
 ## Publicaciones en Google Play
 
@@ -65,10 +66,12 @@ La ficha pública muestra **Última actualización: 14 ago 2026** y el paquete
 
 | Check | Estado | Liga |
 |---|---|---|
-| `build` del PR #10 | verde | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42527825673> |
-| `build` del PR de corrección | PENDIENTE | PENDIENTE |
+| `build` del PR #10 | verde (ejecución anterior); la última corrida está en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42527825673> |
+| `build` del PR #14 (ingreso ×10) | en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531266505> |
+| `build` del PR #15 (glifo) | en cola | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531270985> |
+| `build` del PR #16 (documentación) | PENDIENTE | PENDIENTE |
+| `build` del PR #17 (release) | en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531245188> |
 | `build` del PR de Javier | PENDIENTE | PENDIENTE |
-| `build` del PR de release | PENDIENTE | PENDIENTE |
 
 ## Pruebas y QA
 
