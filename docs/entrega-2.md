@@ -87,11 +87,11 @@ Novedades de 1.3.2
 
 | Check | Estado | Liga |
 |---|---|---|
-| `build` del PR #10 | verde (ejecución anterior); la última corrida está en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42527825673> |
-| `build` del PR #14 (ingreso ×10) | en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531266505> |
-| `build` del PR #15 (glifo) | en cola | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531270985> |
-| `build` del PR #16 (documentación) | PENDIENTE | PENDIENTE |
-| `build` del PR #17 (release) | en curso | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531245188> |
+| `build` del PR #10 | **verde** | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531147732> |
+| `build` del PR #14 (ingreso ×10) | **verde** | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531266505> |
+| `build` del PR #15 (glifo) | **verde** | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531270985> |
+| `build` del PR #16 (documentación) | **verde** (commit anterior) | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531329961> |
+| `build` del PR #17 (release) | **verde** | <https://github.com/jesusGoliat/EDU_Tycoon/actions/runs/42531245188> |
 | `build` del PR de Javier | PENDIENTE | PENDIENTE |
 
 ## Pruebas y QA
