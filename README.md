@@ -52,6 +52,13 @@ integrada con el PR #2). Ver [`docs/idea.md`](docs/idea.md).
 | Primera publicación `1.3.1 (5)` | PENDIENTE de captura |
 | Actualización `1.3.2 (6)` | PENDIENTE |
 
+### Cómo instalar la versión de prueba
+
+1. Abrir <https://play.google.com/apps/testing/io.moviles.IPN_Tycoon> con la cuenta de Google autorizada.
+2. Pulsar **Convertirse en tester**.
+3. Instalar o actualizar desde Google Play.
+4. Reportar problemas como issues, indicando el `versionCode` y los pasos para reproducirlos.
+
 ## Uso de asistentes de IA (Entrega 2)
 
 <!-- PENDIENTE: la redacta Jesús. El agente no completa este texto. -->

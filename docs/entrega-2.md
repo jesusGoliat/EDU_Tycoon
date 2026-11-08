@@ -62,6 +62,27 @@ Evidencias de revisión: `pr-01.png`, `pr-02.png`, `pr-03.png` (PENDIENTE).
 La ficha pública muestra **Última actualización: 14 ago 2026** y el paquete
 `io.moviles.IPN_Tycoon`, lo que confirma la primera publicación.
 
+### Notas de versión (1.3.2)
+
+```text
+Novedades de 1.3.2
+- Nuevo Instituto Rival controlado por IA: compite por los alumnos del campus,
+  compra y mejora edificios, y muestra la cuota de mercado en el HUD.
+- Los edificios del rival se ven en rojo y no se pueden comprar.
+- Nuevo final de partida con diálogo de victoria o derrota.
+- El estado del rival se guarda y se recupera junto con la partida.
+- Corregido: la ventana de edificio mostraba un ingreso 10 veces menor al real.
+- Corregido: el título de victoria muestra «¡Victoria!».
+```
+
+## Cómo instalar la versión de prueba
+
+1. Abrir <https://play.google.com/apps/testing/io.moviles.IPN_Tycoon> con la
+   cuenta de Google autorizada por el propietario.
+2. Pulsar **Convertirse en tester**.
+3. Instalar o actualizar desde Google Play.
+4. Para reportar un problema, abrir un issue con el `versionCode` y los pasos.
+
 ## Integración continua
 
 | Check | Estado | Liga |
