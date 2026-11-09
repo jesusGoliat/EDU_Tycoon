@@ -3,6 +3,8 @@ package io.moviles.IPN_Tycoon
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.kotcrab.vis.ui.widget.VisWindow
+import io.moviles.IPN_Tycoon.rival.MercadoAlumnos
+import io.moviles.IPN_Tycoon.rival.RivalState
 import ktx.actors.onChange
 import ktx.scene2d.*
 
@@ -20,7 +22,11 @@ class BuildingInfoWindow(
         val resultado = ReglaCompra.evaluar(data)
         val costo     = ReglaCompra.costo(data)
 
+        // Si el rival ya compró el edificio, la ventana sólo lo informa.
+        val nivelRival = if (data.comprada) 0 else (RivalState.edificios[data.id] ?: 0)
+
         val btnTexto = when {
+            nivelRival > 0 -> ""
             resultado == ResultadoCompra.NivelMaximo -> "NIVEL MÁXIMO"
             !data.comprada -> "COMPRAR  \$${fmt(costo)}"
             else           -> "MEJORAR LVL ${data.nivel + 1}  \$${fmt(costo)}"
@@ -44,27 +50,32 @@ class BuildingInfoWindow(
             // ── Stats ─────────────────────────────────────────────────
             label("Capacidad: ${data.capacidad} alumnos"); row()
 
-            if (data.comprada) {
+            if (nivelRival > 0) {
+                label("Propiedad del Instituto Rival (Nivel $nivelRival)") {
+                    color = Color.SALMON
+                }.cell(padTop = 6f)
+                row()
+            } else if (data.comprada) {
                 label("Nivel actual: ${data.nivel} / ${data.mejoraMax}") {
                     color = Color.CYAN
                 }.cell(padBottom = 2f)
                 row()
 
-                val ingresoCiclo = data.baseAlumnos * data.nivel * 10L
+                val ingresoCiclo = data.baseAlumnos * data.nivel * MercadoAlumnos.INGRESO_POR_ALUMNO
                 label("Ingreso/ciclo: \$${fmt(ingresoCiclo)}") {
                     color = Color.GREEN
                 }
                 row()
 
                 if (data.nivel < data.mejoraMax) {
-                    val ingresoSiguiente = data.baseAlumnos * (data.nivel + 1) * 10L
+                    val ingresoSiguiente = data.baseAlumnos * (data.nivel + 1) * MercadoAlumnos.INGRESO_POR_ALUMNO
                     label("Nivel ${data.nivel + 1}: \$${fmt(ingresoSiguiente)}/ciclo") {
                         color = Color.LIGHT_GRAY
                     }
                     row()
                 }
             } else {
-                val ingresoNivel1 = data.baseAlumnos * 1 * 10L
+                val ingresoNivel1 = data.baseAlumnos * 1 * MercadoAlumnos.INGRESO_POR_ALUMNO
                 label("Ingreso al comprar: \$${fmt(ingresoNivel1)}/ciclo") {
                     color = Color.GREEN
                 }
@@ -85,11 +96,17 @@ class BuildingInfoWindow(
             row()
 
             // ── Botón acción ──────────────────────────────────────────
-            textButton(btnTexto) {
+            if (nivelRival == 0) textButton(btnTexto) {
                 isDisabled = resultado != ResultadoCompra.Exitosa
 
                 onChange {
                     if (isDisabled) return@onChange
+                    // El rival pudo comprarlo mientras esta ventana estaba abierta.
+                    if (!data.comprada && RivalState.posee(data.id)) {
+                        setText("Propiedad del rival")
+                        isDisabled = true
+                        return@onChange
+                    }
 
                     // El saldo pudo cambiar con la ventana abierta: aplicar vuelve a evaluar.
                     val final = ReglaCompra.aplicar(data)
